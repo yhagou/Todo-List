@@ -1,0 +1,29 @@
+import { FormEvent, useState } from "react";
+import styles from "./styles.module.scss";
+export const Task: React.FC = () => {
+  const [taskTitle, setTaskTitle] = useState("");
+
+  function handleSubmitAddTask(event: FormEvent) {
+    event.preventDefault();
+    console.log(taskTitle);
+  }
+
+  return (
+    <section className={styles.container}>
+      <form onSubmit={handleSubmitAddTask}>
+        <div>
+          <label htmlFor="task-tittle">Adiconar Tarefa</label>
+          <input
+            value={taskTitle}
+            onChange={(event) => setTaskTitle(event.target.value)}
+            type="text"
+            id="task-title"
+            placeholder="Titulo da Tarefa"
+          />
+        </div>
+
+        <button type="submit">Adicionar Tarefa</button>
+      </form>
+    </section>
+  );
+};
